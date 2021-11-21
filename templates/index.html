@@ -12,7 +12,7 @@
 <body>
 	<canvas id="canvas"></canvas>
 	<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden="">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden="" id="PressMe">
   Launch demo modal
 </button>
 
@@ -21,27 +21,66 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<h4 class="modal-title" id="exampleModalLabel">Challenge</h4>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 		<div class="modal-body">
-		<h5>Popover in a modal</h5>
-			<p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+			<h5>Categorie</h5>
+			<p id="CategorieChallenge"> </p>
 			<hr>
-			<h5>Tooltips in a modal</h5>
-			<p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+			<h5>Descriere</h5>
+			<p id="DescriereChallenge"></p>
+			<hr>
+			<h5>Link</h5>
+			<p id="LinkChallenge"> </p>
+
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-success">Send</button>
+			
 		</div>
 
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div>
+
 		</div>
 	</div>
 </div>
 
 
 </body>
+
+
+
+
+
+<script>
+	function getInfo(ID) {
+		var nume = "Challenge="+ID;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var response = this.responseText;
+				var Name = response.split("|")[0]
+				var Descriere = response.split("|")[1]
+				var Location = response.split("|")[2]
+				var Category = response.split("|")[3]
+				document.getElementById("CategorieChallenge").innerHTML = Category;
+				document.getElementById("exampleModalLabel").innerHTML = Name;
+				document.getElementById("DescriereChallenge").innerHTML = Descriere;
+				document.getElementById("LinkChallenge").innerHTML = Location;
+				const button = document.querySelector('#PressMe');
+				button.addEventListener('click', () => { ddoptinbox.openclose('open') });
+				button.click();
+			}
+		};
+		xhttp.open("POST", "/getInfo", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(nume);
+	}
+	</script>
+
+
 <script>
     // The attributes of the player.
     var player = {
@@ -270,25 +309,6 @@
 
 
 
-
-
-
-
-<script>
-	function getInfo(ID) {
-		var nume = "Challenge="+ID;
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var response = this.responseText;
-				alert(response);
-			}
-		};
-		xhttp.open("POST", "/getInfo", true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send(nume);
-	}
-	</script>
 
 
 
