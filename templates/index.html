@@ -1,0 +1,297 @@
+<html>
+<head>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+	<canvas id="canvas"></canvas>
+	<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden="">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+		<div class="modal-body">
+		<h5>Popover in a modal</h5>
+			<p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+			<hr>
+			<h5>Tooltips in a modal</h5>
+			<p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+		</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+<script>
+    // The attributes of the player.
+    var player = {
+        x: 200,
+        y: 200,
+        x_v: 0,
+        y_v: 0,
+        jump : true,
+        height: 20,
+        width: 20
+        };
+    // The status of the arrow keys
+    var keys = {
+        right: false,
+        left: false,
+        up: false,
+        };
+    // The friction and gravity to show realistic movements    
+    var gravity = 0.8;
+    var friction = 0.7;
+    // The number of platforms
+    var num = 2;
+    // The platforms
+    var platforms = [];
+    var CTFs = [];
+    // Function to render the canvas
+    function rendercanvas(){
+        ctx.fillStyle = "#F0F8FF";
+        ctx.fillRect(0, 0, 2000, 1000);
+    }
+    // Function to render the player
+    function renderplayer(){
+        ctx.fillStyle = "red";
+        ctx.fillRect((player.x)-20, (player.y)-20, player.width, player.height);
+        }
+    // Function to create platforms
+    function createplat(){
+		CTFs.push(
+			{
+			x: 400,
+			y: 790,
+			width: 50,
+			height: 50
+			}
+		);
+		
+		platforms.push(
+			{
+			x: 0,
+			y: 985,
+			width: 2000,
+			height: 100
+			}
+		);
+		platforms.push(
+			{
+			x: 0,
+			y: 0,
+			width: 2000,
+			height: 15
+			}
+		);
+		platforms.push(
+			{
+			x: 100 ,
+			y: 930,
+			width: 110,
+			height: 15
+			}
+		);
+		
+		
+		platforms.push(
+			{
+			x: 1100 ,
+			y: 800,
+			width: 110,
+			height: 15
+			}
+		);
+		platforms.push(
+			{
+			x: 250 ,
+			y: 850,
+			width: 550,
+			height: 15
+			}
+		);
+		platforms.push(
+			{
+			x: 100 ,
+			y: 200,
+			width: 110,
+			height: 15
+			}
+		);
+		
+
+	}
+    // Function to render platforms
+    function renderplat(){
+        ctx.fillStyle = "#45597E";
+		for (let i=0; i < platforms.length; i++) 
+			ctx.fillRect(platforms[i].x, platforms[i].y, platforms[i].width, platforms[i].height);
+			
+		const img = new Image();
+		img.onload;
+		img.src = './static/images/PC.jpg';
+		for (let i=0; i < CTFs.length; i++) 
+			ctx.drawImage(img, CTFs[i].x, CTFs[i].y,  CTFs[i].width, CTFs[i].height);
+    
+    }
+    // This function will be called when a key on the keyboard is pressed
+    function keydown(e) {
+        // 37 is the code for the left arrow key
+        if(e.keyCode == 65) {
+            keys.left = true;
+        }
+        // 37 is the code for the up arrow key
+        if(e.keyCode == 87) {
+            if(player.jump == false) {
+                player.y_v = -10;
+            }
+        }
+        // 39 is the code for the right arrow key
+        if(e.keyCode == 68) {
+            keys.right = true;
+        }
+    }
+	
+	function startModal(e) {
+        // 37 is the code for the left arrow key
+        if(e.keyCode == 32) {
+            getInfo(CTF);
+
+        }
+    }
+	
+    // This function is called when the pressed key is released
+    function keyup(e) {
+        if(e.keyCode == 65) {
+            keys.left = false;
+        }
+        if(e.keyCode == 87) {
+            if(player.y_v < -2) {
+            player.y_v = -3;
+            }
+        }
+        if(e.keyCode == 68) {
+            keys.right = false;
+        }
+    } 
+	let CTF = -1;
+    function loop() {
+        // If the player is not jumping apply the effect of frictiom
+        if(player.jump == false) {
+            player.x_v *= friction;
+        } else {
+            // If the player is in the air then apply the effect of gravity
+			if (player.y_v <10)
+				player.y_v += gravity;
+			else
+				player.y_v += 0.05
+        }
+        player.jump = true;
+        // If the left key is pressed increase the relevant horizontal velocity
+        if(keys.left) {
+            player.x_v = -2.5;
+        }
+        if(keys.right) {
+            player.x_v = 2.5;
+        }
+        // Updating the y and x coordinates of the player
+        player.y += player.y_v;
+        player.x += player.x_v;
+        // A simple code that checks for collions with the platform
+        let i = -1;
+		CTF = -1;
+		let allow = 0;
+		for (let ii=0; ii < platforms.length; ii++) {
+			if(platforms[ii].x < player.x && player.x < platforms[ii].x + platforms[ii].width+player.width &&
+			platforms[ii].y < player.y && player.y < platforms[ii].y + platforms[ii].height){
+				i = ii;
+			}
+		}
+		
+		
+		for (let ii=0; ii < CTFs.length; ii++) {
+			if(CTFs[ii].x < player.x && player.x < CTFs[ii].x + CTFs[ii].width+player.width &&
+			CTFs[ii].y < player.y && player.y < CTFs[ii].y + CTFs[ii].height){
+				CTF = ii;
+			}
+		}
+		
+		
+		
+        if (i > -1){
+            player.jump = false;
+            player.y = platforms[i].y;    
+        }
+		if (CTF > -1){
+			document.addEventListener("keydown",startModal);
+        }
+		else{
+			document.removeEventListener("keydown",startModal);
+		}
+		
+        // Rendering the canvas, the player and the platforms
+        rendercanvas();
+        renderplayer();
+        renderplat();
+    }
+    canvas=document.getElementById("canvas");
+    ctx=canvas.getContext("2d");
+    ctx.canvas.height = 1000;
+    ctx.canvas.width = 2000;
+    createplat();
+    // Adding the event listeners 
+    document.addEventListener("keydown",keydown);
+    document.addEventListener("keyup",keyup);
+    setInterval(loop,22);
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+	function getInfo(ID) {
+		var nume = "Challenge="+ID;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var response = this.responseText;
+				alert(response);
+			}
+		};
+		xhttp.open("POST", "/getInfo", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(nume);
+	}
+	</script>
+
+
+
+
+
+</html>
