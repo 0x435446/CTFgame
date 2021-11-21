@@ -38,8 +38,8 @@
 				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-success">Send</button>
-			
+			<button type="button" class="btn btn-dark">Send</button>
+
 		</div>
 
 
@@ -68,7 +68,8 @@
 				document.getElementById("CategorieChallenge").innerHTML = Category;
 				document.getElementById("exampleModalLabel").innerHTML = Name;
 				document.getElementById("DescriereChallenge").innerHTML = Descriere;
-				document.getElementById("LinkChallenge").innerHTML = Location;
+
+				document.getElementById("LinkChallenge").innerHTML = "<a href=\""+Location+"\" class=\"link-dark\">HERE</a>";
 				const button = document.querySelector('#PressMe');
 				button.addEventListener('click', () => { ddoptinbox.openclose('open') });
 				button.click();

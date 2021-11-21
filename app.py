@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template,jsonify
-from flask import request,redirect,session,send_file
+from flask import request,redirect,session,send_file,send_from_directory
 
 import MySQLdb 
 app = Flask(__name__)
@@ -35,6 +35,11 @@ def getInfo():
 		Category = data[0][7]
 		return Name + "|" + Descriere + "|" + Location + "|" + Category
 
+
+
+@app.route('/Challenges/<path:filename>', methods=['GET', 'POST'])
+def download(filename):  
+	return send_from_directory(directory='Challenges', filename=filename)
 
 
 if __name__ == '__main__':
