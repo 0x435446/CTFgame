@@ -27,7 +27,7 @@ def getInfo():
 		Data = request.form
 		ID = int(Data['Challenge']) + 1
 		cursor= db.cursor()
-		cursor.execute("SELECT * FROM challenges WHERE ID='"+MySQLdb.escape_string(str(ID))+"'")
+		cursor.execute("SELECT * FROM challenges WHERE ID='"+MySQLdb.escape_string(str(ID)).decode()+"'")
 		data = (cursor.fetchall())
 		Name = data[0][1]
 		Descriere = data[0][3]
