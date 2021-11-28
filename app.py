@@ -3,6 +3,11 @@ from flask import render_template,jsonify
 from flask import request,redirect,session,send_file,send_from_directory
 
 import MySQLdb 
+import pymysql
+from pymysql.converters import escape_string
+
+
+
 app = Flask(__name__)
 
 app.secret_key = 'PapanasiCuBranza123456'
@@ -27,7 +32,7 @@ def getInfo():
 		Data = request.form
 		ID = int(Data['Challenge']) + 1
 		cursor= db.cursor()
-		cursor.execute("SELECT * FROM challenges WHERE ID='"+MySQLdb.escape_string(str(ID)).decode()+"'")
+		cursor.execute("SELECT * FROM challenges WHERE ID='"+ escape_string(str(ID))+"'")
 		data = (cursor.fetchall())
 		Name = data[0][1]
 		Descriere = data[0][3]

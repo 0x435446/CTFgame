@@ -109,7 +109,11 @@
     var CTFs = [];
     // Function to render the canvas
     function rendercanvas(){
-        ctx.fillStyle = "#F0F8FF";
+    	const img = new Image();
+		img.onload;
+		img.src = './static/images/brick.png';
+		var pat = ctx.createPattern(img, "repeat");
+        ctx.fillStyle = pat;
         ctx.fillRect(0, 0, 2000, 1000);
     }
     // Function to render the player
@@ -193,7 +197,7 @@
 	}
     // Function to render platforms
     function renderplat(){
-        ctx.fillStyle = "#45597E";
+        ctx.fillStyle = "#000000";
 		for (let i=0; i < platforms.length; i++) 
 			ctx.fillRect(platforms[i].x, platforms[i].y, platforms[i].width, platforms[i].height);
 			
