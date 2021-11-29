@@ -132,13 +132,13 @@
         const img2 = new Image();
 		img2.onload;
 		if (state == 0 && position == 0)
-			img2.src = './static/images/Player_standing_right.png'
+			img2.src = './static/images/Player_standing_right_effects.png'
 		if (state == 1 && position == 0)
-			img2.src = './static/images/Player_running_right.png'
+			img2.src = './static/images/Player_running_right_effects.png'
 		if (state == 0 && position == 1)
-			img2.src = './static/images/Player_standing_left.png'
+			img2.src = './static/images/Player_standing_left_effects.png'
 		if (state == 1 && position == 1)
-			img2.src = './static/images/Player_running_left.png'
+			img2.src = './static/images/Player_running_left_effects.png'
 		img2.onload;
     	ctx.drawImage(img2, (player.x)-player.width, (player.y)-player.height-10);
         //ctx.fillRect((player.x)-player.width, (player.y)-player.height, player.width, player.height);
