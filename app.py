@@ -44,7 +44,7 @@ def getInfo():
 
 @app.route('/Challenges/<path:filename>', methods=['GET', 'POST'])
 def download(filename):  
-	return send_from_directory(directory='Challenges', filename=filename)
+	return send_from_directory(directory='Challenges', path=filename)
 
 
 if __name__ == '__main__':

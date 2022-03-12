@@ -84,6 +84,16 @@
 
 <script>
 
+
+	window.onkeydown = function(e) { 
+		return !(e.keyCode == 32 && e.target == document.body);
+	}; 
+
+
+
+
+
+
 	var position = 0;
 	var state = 0;
 
@@ -118,7 +128,7 @@
 		img.src = './static/images/brick.png';
 		var pat = ctx.createPattern(img, "repeat");
         ctx.fillStyle = pat;
-        ctx.fillRect(0, 0, 2000, 1000);
+        ctx.fillRect(0, 0, 2000, 2000);
     }
     // Function to render the player
     function renderplayer(){
@@ -144,76 +154,43 @@
         //ctx.fillRect((player.x)-player.width, (player.y)-player.height, player.width, player.height);
         }
     // Function to create platforms
+
+    function addCTF(x,y,width,height){
+		CTFs.push(
+			{
+			x: x,
+			y: y,
+			width: width,
+			height: height
+			}
+		);
+
+    }
+
+
+    function addPlatforms(x,y,width,height){
+		platforms.push(
+			{
+			x: x,
+			y: y,
+			width: width,
+			height: height
+			}
+		);
+
+    }
+
     function createplat(){
-		CTFs.push(
-			{
-			x: 400,
-			y: 790,
-			width: 50,
-			height: 50
-			}
-		);
-		
+		addCTF(400,790,50,50);
+		addCTF(1100,750,50,50);
+		addPlatforms(0,985,2000,100);
+		addPlatforms(0,0,2000,15);
+		addPlatforms(100,930,110,15);
+		addPlatforms(1100,800,110,15);
+		addPlatforms(250,850,550,15);
+		addPlatforms(100,200,110,15);
 
-		CTFs.push(
-			{
-			x: 1100,
-			y: 750,
-			width: 50,
-			height: 50
-			}
-		);
 
-		platforms.push(
-			{
-			x: 0,
-			y: 985,
-			width: 2000,
-			height: 100
-			}
-		);
-		platforms.push(
-			{
-			x: 0,
-			y: 0,
-			width: 2000,
-			height: 15
-			}
-		);
-		platforms.push(
-			{
-			x: 100 ,
-			y: 930,
-			width: 110,
-			height: 15
-			}
-		);
-		
-		
-		platforms.push(
-			{
-			x: 1100 ,
-			y: 800,
-			width: 110,
-			height: 15
-			}
-		);
-		platforms.push(
-			{
-			x: 250 ,
-			y: 850,
-			width: 550,
-			height: 15
-			}
-		);
-		platforms.push(
-			{
-			x: 100 ,
-			y: 200,
-			width: 110,
-			height: 15
-			}
-		);
 		
 
 	}
@@ -341,7 +318,7 @@
     }
     canvas=document.getElementById("canvas");
     ctx=canvas.getContext("2d");
-    ctx.canvas.height = 1000;
+    ctx.canvas.height = 2000;
     ctx.canvas.width = 2000;
     createplat();
     // Adding the event listeners 
