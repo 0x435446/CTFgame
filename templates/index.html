@@ -181,14 +181,73 @@
     }
 
     function createplat(){
-		addCTF(400,790,50,50);
-		addCTF(1100,750,50,50);
-		addPlatforms(0,985,2000,100);
+
+
+
+
+
+		//SCARI MIJLOC - STANGA - SUS
+		// ----------------------------
+
+		addCTF(1030,150,50,50);
+		addPlatforms(1000,200,110,15);
+
+		addCTF(1180,200,50,50);
+		addPlatforms(1150,250,110,15);
+
+		addCTF(1330,250,50,50);
+		addPlatforms(1300,300,110,15);
+
+		addCTF(1480,300,50,50);
+		addPlatforms(1450,350,110,15);
+
+		addCTF(1630,350,50,50);
+		addPlatforms(1600,400,110,15);
+		// ----------------------------
+
+
+
+		//SCARI JOS - DREAPTA - SUS
+		// ----------------------------
+
+		addCTF(1780,400,50,50);
+		addPlatforms(1750,450,110,15);
+
+		addCTF(1630,450,50,50);
+		addPlatforms(1600,500,110,15);
+
+		addCTF(1480,500,50,50);
+		addPlatforms(1450,550,110,15);
+
+		addCTF(1330,550,50,50);
+		addPlatforms(1300,600,110,15);
+
+		addCTF(1180,600,50,50);
+		addPlatforms(1150,650,110,15);
+
+		addCTF(1030,650,50,50);
+		addPlatforms(1000,700,110,15);
+
+		addCTF(880,700,50,50);
+		addPlatforms(850,750,110,15);
+
+		addCTF(730,750,50,50);
+		addPlatforms(700,800,110,15);
+		// ----------------------------
+
+
+		addPlatforms(250,850,450,15); // platforma jos stanga
 		addPlatforms(0,0,2000,15);
 		addPlatforms(100,930,110,15);
-		addPlatforms(1100,800,110,15);
-		addPlatforms(250,850,550,15);
-		addPlatforms(100,200,110,15);
+		addCTF(400,800,50,50);
+		addCTF(500,800,50,50);
+
+
+
+		addPlatforms(100,200,110,15); //platforma player
+		addPlatforms(0,985,1700,100); //platforma etaj 0 
+		addPlatforms(1800,985,200,100); //platforma etaj 0 
+		addPlatforms(0,1900,2000,100); //platforma etaj 1
 
 
 		
@@ -202,7 +261,7 @@
 			
 		const img = new Image();
 		img.onload;
-		img.src = './static/images/PC.jpg';
+		img.src = './static/images/challenge.png';
 		for (let i=0; i < CTFs.length; i++) 
 			ctx.drawImage(img, CTFs[i].x, CTFs[i].y,  CTFs[i].width, CTFs[i].height);
     
@@ -293,7 +352,7 @@
 		
 		for (let ii=0; ii < CTFs.length; ii++) {
 			if(CTFs[ii].x < player.x && player.x < CTFs[ii].x + CTFs[ii].width+player.width &&
-			CTFs[ii].y < player.y && player.y < CTFs[ii].y + CTFs[ii].height){
+			CTFs[ii].y < player.y && player.y < CTFs[ii].y + 10 + CTFs[ii].height){
 				CTF = ii;
 			}
 		}
@@ -313,8 +372,8 @@
 		
         // Rendering the canvas, the player and the platforms
         rendercanvas();
-        renderplayer();
         renderplat();
+        renderplayer();
     }
     canvas=document.getElementById("canvas");
     ctx=canvas.getContext("2d");

@@ -32,6 +32,7 @@ def getInfo():
 		Data = request.form
 		ID = int(Data['Challenge']) + 1
 		cursor= db.cursor()
+		print (ID)
 		cursor.execute("SELECT * FROM challenges WHERE ID='"+ escape_string(str(ID))+"'")
 		data = (cursor.fetchall())
 		Name = data[0][1]
