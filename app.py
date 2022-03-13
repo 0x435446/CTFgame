@@ -59,6 +59,10 @@ def download(filename):
 def login():
 		return render_template('login.html')
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+		return "Da"
+
 
 
 if __name__ == '__main__':

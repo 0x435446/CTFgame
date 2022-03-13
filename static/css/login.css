@@ -1,0 +1,231 @@
+
+body{
+
+}
+
+
+
+.navbar{
+	background-color: #091E1B;
+	color: white;
+	text-align: center;
+
+}
+
+
+.navbar_block{
+	
+	display: inline-block;
+	color: white;
+	margin: 2px;
+	cursor: pointer;
+	width: 10%;
+	text-align: center;
+	max-width: 300px;
+	mix-width: 200px;
+}
+
+
+.navbar_block: hover{
+    color: #808080;
+}
+
+
+a, a:hover, a:visited, a:active {
+  color: inherit;
+  text-decoration: none;
+ }
+
+
+
+.content{
+	height: 1500px;
+}
+
+
+.display{
+	height: 500px;
+	max-height: 500px;
+	position: relative;
+
+}
+
+.displayImage{
+	z-index: 0;
+	position: absolute;
+}
+
+
+.displayShadow{
+	position: absolute;
+	background-color: rgb(0,0,0,0.8);
+	height: 500px;
+	max-height: 500px;
+	z-index: 3;
+	width: 100%;
+	transition: 2s;
+	line-height: 500px;
+	text-align: center;
+	font-size: 150px;
+	color: white;
+}
+.displayShadow:hover{
+	background-color: rgb(0,0,0,0.5);
+	color: rgb(0,0,0,0);
+	font-size: 0px;
+	color: lightgray;
+
+}
+
+
+.displayLeft{
+	float:left;
+	color:black;
+	width:50%;
+	background-color: black;
+	box-shadow: 0 0 3px #000000;
+	height: 500px;
+}
+
+.displayRight{
+	height: 500px;
+	float:left;
+	width:50%;
+	color:black;
+	background-color: lightgray;
+	margin-left: 0px;
+	box-shadow: 0 0 3px #000000;
+}
+
+
+
+
+
+
+.dots {	
+	position: relative;
+	top: 45%;
+}
+
+.dotNext {	
+	right: 0;
+	height: 60px;
+	width: 60px;
+	background-color: rgb(255,255,255,0);
+	border-radius: 50%;
+	position: absolute;
+}
+
+
+.dotPrev {	
+	left: 0;
+	height: 60px;
+	width: 60px;
+	background-color: rgb(255,255,255,0);
+	border-radius: 50%;
+	position: absolute;
+}
+
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+
+.titlu{
+	text-align: center;
+	width: 100%;
+	color: white;
+	font-size: 100px;
+}
+
+input[type=password], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #071816;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: white;
+  color: black;
+
+}
+
+
+.form{
+	background-color: rgb(0,0,0,0.5);
+	margin-top: 10%;
+	padding-right: 3%;
+	padding-left: 3%;
+	margin-left: 22%;
+	margin-right: 22%;
+}
+
+
+.page{
+	background-color: #113A36;
+	margin: auto;
+	max-width: 2000px;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;  
+}
+
+
+.stiri{
+	color: white;
+	background-color: rgb(0,0,0,0.5);
+
+}
+
+
+.registerButton{
+
+	position: relative;
+}
+
+.registerCircle{
+	overflow: hidden;
+	position: relative;
+	background-color: white;
+	border-radius: 50%;
+	position: absolute;
+	color: white;
+	width: 30px;
+	height: 30px;
+	right: 0;
+	z-index: 5;
+
+}
+
+
+.login{
+	display: block;
+}
+
+.register{
+	display: none;
+}
