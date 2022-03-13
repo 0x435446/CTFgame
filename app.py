@@ -20,9 +20,14 @@ app.config['UPLOAD_FOLDER']='/tmp/upload'
 app.config['UPLOAD_EXTENSIONS'] = ['.txt']
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
+		return render_template('home.html')
+
+
+@app.route('/game', methods=['GET', 'POST'])
+def game():
 		return render_template('index.html')
 
 @app.route('/getInfo', methods=['GET', 'POST'])
@@ -46,6 +51,14 @@ def getInfo():
 @app.route('/Challenges/<path:filename>', methods=['GET', 'POST'])
 def download(filename):  
 	return send_from_directory(directory='Challenges', path=filename)
+
+
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+		return render_template('login.html')
+
 
 
 if __name__ == '__main__':
