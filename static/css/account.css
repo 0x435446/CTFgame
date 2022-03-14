@@ -88,11 +88,65 @@ a, a:hover, a:visited, a:active {
 }
 
 
+
+
+
+
+
+
+
+
+.showProgress{
+	margin-left: 10px;
+	margin-top: 90px;
+}
+
+.progressbar {
+    #background-color: #20201F;
+    border-radius: 6px; /* (heightOfInnerDiv / 2) + padding */
+    padding: 4px;
+    width: 97%;
+    text-align:right;
+    color: white;
+}
+
+
+.progressbar2 {
+    margin-top: 15px;
+    #background-color: #20201F;                                   
+    border-radius: 6px; /* (heightOfInnerDiv / 2) + padding */
+    padding: 4px;
+    width: 97%;
+    text-align:right;
+    color: white;
+}
+
+
+
+.progressbars {
+    background-color: white;
+    width: 97%;
+    height: 2px;
+    border-radius: 10px;
+    text-align:center;
+    color:black;
+}
+
+.progress {
+    background-color: #0B2522;
+    width: 0%; /* Adjust with JavaScript */
+    height: 2px;
+    border-radius: 10px;
+    text-align:center;
+}   
+
+
+
 .displayLeft{
 	float:left;
 	color:black;
 	width:50%;
-	background-color: black;
+	background-color: #1A5B55;
 	box-shadow: 0 0 3px #000000;
 	height: 500px;
 }
@@ -102,56 +156,33 @@ a, a:hover, a:visited, a:active {
 	float:left;
 	width:50%;
 	color:black;
-	background-color: lightgray;
+	background-color: black;
 	margin-left: 0px;
 	box-shadow: 0 0 3px #000000;
 }
 
 
-
-.profile{
-
-	position: relative;
-}
-
-.profileCircle{
-	text-align: left;
-	margin-top: -23px;
-	overflow: hidden;
-	background-color: rgb(0,0,0,1);
-	border-radius: 50%;
-	position: absolute;
+.info{
 	color: white;
-	width: 50px;
-	height: 50px;
-	right: 0;
-	z-index: 5;
-
+	font-size: 30px;
 }
 
-
-.dots {	
-	position: relative;
-	top: 45%;
+.infoUsername{
+	margin-left: 10px;
+	margin-top: 10px;
+	color: white;
+	font-size: 30px;
 }
 
-.dotNext {	
-	right: 0;
-	height: 60px;
-	width: 60px;
-	background-color: rgb(255,255,255,0);
-	border-radius: 50%;
-	position: absolute;
+.infoPoints{
+	margin-left: 10px;
+	color: white;
+	font-size: 20px;
 }
 
-
-.dotPrev {	
-	left: 0;
-	height: 60px;
-	width: 60px;
-	background-color: rgb(255,255,255,0);
-	border-radius: 50%;
-	position: absolute;
+.otherInfo{
+	margin-left: 10px;
+	color: white;
+	font-size: 15px;
+	margin-top: 5px;
 }
-
-

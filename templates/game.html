@@ -21,7 +21,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title" id="exampleModalLabel">Challenge</h4>
+				<h4 class="modal-title" id="numeChallenge">Challenge</h4>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 		<div class="modal-body">
@@ -35,10 +35,10 @@
 			<p id="LinkChallenge"> </p>
 
 			<div class="input-group mb-3">
-				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				<input type="text" id="Flag" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-dark">Send</button>
+			<button type="button" name = "" id="sendFlag" class="btn btn-dark" onclick="sendFlag()">Send</button>
 
 		</div>
 
@@ -51,6 +51,24 @@
 </body>
 
 
+<script>
+
+	function sendFlag(){
+		var flag = "Flag="+document.getElementById("Flag").value;
+		var challenge = "Name="+document.getElementById("numeChallenge").innerHTML;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var response = this.responseText;
+				
+			}
+		};
+		xhttp.open("POST", "/sendFlag", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(flag+"&"+challenge);
+	}
+
+</script>
 
 
 
@@ -66,7 +84,7 @@
 				var Location = response.split("|")[2]
 				var Category = response.split("|")[3]
 				document.getElementById("CategorieChallenge").innerHTML = Category;
-				document.getElementById("exampleModalLabel").innerHTML = Name;
+				document.getElementById("numeChallenge").innerHTML = Name;
 				document.getElementById("DescriereChallenge").innerHTML = Descriere;
 
 				document.getElementById("LinkChallenge").innerHTML = "<a href=\""+Location+"\" class=\"link-dark\">HERE</a>";

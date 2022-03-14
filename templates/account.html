@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}">
+	<title></title>
+</head>
+
+<body>
+
+
+
+	
+	
+
+	<div class="page">
+
+		<div class="navbar">
+			<div class="navbar_block">
+				<a href="/"> Home </a>
+			</div>
+			<div class="navbar_block">
+				<a href="/game"> Game  </a>
+			</div>
+			<div class="navbar_block">
+				Scoreboard
+			</div>
+
+			
+
+
+
+		</div>
+
+
+
+		<div class="content">
+
+			<div class="displayLeft">
+
+				<div class="info">
+					<div class="infoUsername">
+						{{username}} <br>
+					</div>
+
+					<div class="infoPoints">
+						Points: {{points}} <br>
+					</div>
+
+					<div class="otherInfo">
+						Scoreboard: N/A <br>
+					</div>
+
+					<div class="otherInfo">
+						Rank: N/A <br>
+					</div>
+
+					<div class="otherInfo">
+						Challenges Solved: N/A <br>
+					</div>
+
+					<div class="otherInfo">
+						Items: N/A <br>
+					</div>
+
+					<div class="otherInfo">
+						Maps: N/A <br>
+					</div>
+
+
+
+
+
+				</div>
+
+
+
+
+				<div class="showProgress">
+
+					<div class="progressbar2">
+						2/2
+						<span style="float: left">Web Security</span>
+						<div class="progressbars">
+							<div class="progress" id="web_progress">
+
+							</div>
+						</div>
+					</div>
+
+					<div class="progressbar">
+						1/2
+						<span style="float: left">Network Forensics</span>
+						<div class="progressbars">
+							<div class="progress" id="networking_progress">
+
+							</div>
+						</div>
+					</div>
+
+					<div class="progressbar">
+						1/2
+						<span style="float: left">Forensics</span>
+						<div class="progressbars">
+							<div class="progress" id="networking_progress">
+
+							</div>
+						</div>
+					</div>
+
+
+					<div class="progressbar">
+						1/2
+						<span style="float: left">Cryptography</span>
+						<div class="progressbars">
+							<div class="progress" id="networking_progress">
+
+							</div>
+						</div>
+					</div>
+
+					<div class="progressbar">
+						1/2
+						<span style="float: left">Steganography</span>
+						<div class="progressbars">
+							<div class="progress" id="networking_progress">
+
+							</div>
+						</div>
+					</div>
+
+					<div class="progressbar">
+						1/2
+						<span style="float: left">Reverse Engineering</span>
+						<div class="progressbars">
+							<div class="progress" id="networking_progress">
+
+							</div>
+						</div>
+					</div>
+
+
+					<div class="progressbar">
+						1/2
+						<span style="float: left">Pwn</span>
+						<div class="progressbars">
+							<div class="progress" id="networking_progress">
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+
+			</div>
+
+			<div class="displayRight">
+				
+
+
+
+				
+
+
+
+
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>
+
+
+<script>
+	document.getElementById("web_progress").style.width = "100%";
+	document.getElementById("networking_progress").style.width = "50%";
+
+</script>
