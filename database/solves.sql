@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 08:37 PM
+-- Generation Time: Mar 14, 2022 at 10:42 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `solves` (
   `ID` int(11) NOT NULL,
   `ID_User` int(11) NOT NULL,
-  `Challenge` varchar(256) NOT NULL
+  `Challenge` varchar(256) NOT NULL,
+  `Category` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -36,13 +36,19 @@
 
 
 		<div class="content">
+			<div class ="background" id="background">
+
+			</div>
+
+			<div class="displayUp">
+				<div class="infoUsername">
+					{{username}} <br>
+				</div>
+			</div>
 
 			<div class="displayLeft">
 
 				<div class="info">
-					<div class="infoUsername">
-						{{username}} <br>
-					</div>
 
 					<div class="infoPoints">
 						Points: {{points}} <br>
@@ -57,7 +63,7 @@
 					</div>
 
 					<div class="otherInfo">
-						Challenges Solved: N/A <br>
+						Challenges Solved: {{solves_len}} <br>
 					</div>
 
 					<div class="otherInfo">
@@ -80,7 +86,7 @@
 				<div class="showProgress">
 
 					<div class="progressbar2">
-						2/2
+						{{webSolves}}/{{maxWeb}}
 						<span style="float: left">Web Security</span>
 						<div class="progressbars">
 							<div class="progress" id="web_progress">
@@ -90,7 +96,7 @@
 					</div>
 
 					<div class="progressbar">
-						1/2
+						{{networkingSolves}}/{{maxNetworking}}
 						<span style="float: left">Network Forensics</span>
 						<div class="progressbars">
 							<div class="progress" id="networking_progress">
@@ -100,7 +106,7 @@
 					</div>
 
 					<div class="progressbar">
-						1/2
+						0/0
 						<span style="float: left">Forensics</span>
 						<div class="progressbars">
 							<div class="progress" id="networking_progress">
@@ -111,7 +117,7 @@
 
 
 					<div class="progressbar">
-						1/2
+						0/0
 						<span style="float: left">Cryptography</span>
 						<div class="progressbars">
 							<div class="progress" id="networking_progress">
@@ -121,7 +127,7 @@
 					</div>
 
 					<div class="progressbar">
-						1/2
+						0/0
 						<span style="float: left">Steganography</span>
 						<div class="progressbars">
 							<div class="progress" id="networking_progress">
@@ -131,7 +137,7 @@
 					</div>
 
 					<div class="progressbar">
-						1/2
+						0/0
 						<span style="float: left">Reverse Engineering</span>
 						<div class="progressbars">
 							<div class="progress" id="networking_progress">
@@ -142,7 +148,7 @@
 
 
 					<div class="progressbar">
-						1/2
+						0/0
 						<span style="float: left">Pwn</span>
 						<div class="progressbars">
 							<div class="progress" id="networking_progress">
@@ -160,15 +166,34 @@
 			<div class="displayRight">
 				
 
+				<div class="infoSolves">
+					Last solves: <br>
+				</div>
 
 
-				
+				{%for i in range(0, solves_len)%}
+					<div class="lastSolve">
+						<div class="lastSolveName">
+							{{solves[i].split("|")[0]}}  
+						</div>
+					
+						<div class="lastSolveCategory">
+							{{solves[i].split("|")[1]}}
+						</div>
+
+					</div>
+  
+				{%endfor%}
 
 
 
 
 			</div>
+
+
 		</div>
+		
+
 
 	</div>
 </body>
@@ -177,7 +202,22 @@
 
 
 <script>
-	document.getElementById("web_progress").style.width = "100%";
-	document.getElementById("networking_progress").style.width = "50%";
+	let num = {{webSolves}}/{{maxWeb}}*100;
+	let text = num.toString()+"%";
+	document.getElementById("web_progress").style.width = text;
+	num = {{networkingSolves}}/{{maxNetworking}}*100;
+	text = num.toString()+"%";
+	document.getElementById("networking_progress").style.width = text;
 
+</script>
+
+
+
+
+<script>
+	zeros = "";
+	for (var i = 0; i < 9999; i++){
+		zeros += (Math.floor(Math.random() * 10)%2).toString();
+	}
+	document.getElementById("background").innerHTML=zeros;
 </script>

@@ -47,11 +47,6 @@ a, a:hover, a:visited, a:active {
 
 
 
-.content{
-	height: 1500px;
-}
-
-
 .display{
 	background-color: grey;
 	height: 500px;
@@ -133,7 +128,7 @@ a, a:hover, a:visited, a:active {
 }
 
 .progress {
-    background-color: #0B2522;
+    background-color: black;
     width: 0%; /* Adjust with JavaScript */
     height: 2px;
     border-radius: 10px;
@@ -141,12 +136,20 @@ a, a:hover, a:visited, a:active {
 }   
 
 
+.displayUp{
+	float:left;
+	width:100%;
+	background-color: white;
+	box-shadow: 0 0 3px #000000;
+	color:black !important;
+	height: 100px;
+}
 
 .displayLeft{
 	float:left;
 	color:black;
 	width:50%;
-	background-color: #1A5B55;
+	background-color: rgb(0,0,0,0.3);
 	box-shadow: 0 0 3px #000000;
 	height: 500px;
 }
@@ -156,21 +159,25 @@ a, a:hover, a:visited, a:active {
 	float:left;
 	width:50%;
 	color:black;
-	background-color: black;
+	background-color: rgb(0,0,0,0.3);
 	margin-left: 0px;
 	box-shadow: 0 0 3px #000000;
+	transition: 3s;
 }
+
+
 
 
 .info{
 	color: white;
 	font-size: 30px;
+	margin-top: 30px;
 }
 
 .infoUsername{
 	margin-left: 10px;
-	margin-top: 10px;
-	color: white;
+	margin-top: 30px;
+	color: black;
 	font-size: 30px;
 }
 
@@ -185,4 +192,55 @@ a, a:hover, a:visited, a:active {
 	color: white;
 	font-size: 15px;
 	margin-top: 5px;
+}
+
+
+
+.content{
+	height: 1000px;
+	position: relative;
+}
+
+
+
+.background{
+	max-width: 2000px;
+	width: 100%;
+	background-color: rgb(0,0,0,0);
+	opacity: 0.1;
+	max-height: 800px;
+	position: absolute;
+	overflow-wrap: break-word;
+}
+
+
+.lastSolve{
+	margin-top: 30px;
+	border-top: 1px dashed white;
+	text-align: right;
+	font-size: 20px;
+	color: white;
+	margin-left: 10px;
+}
+
+
+
+
+.lastSolveName{
+	text-align: left;
+	float:left;
+	width:50%;
+}
+
+.lastSolveCategory{
+	float:left;
+	width:50%;
+	margin-left: 0px;
+}
+
+.infoSolves{
+	margin-left: 10px;
+	margin-top: 30px;
+	color: white;
+	font-size: 30px;
 }

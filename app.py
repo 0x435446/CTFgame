@@ -183,7 +183,7 @@ def sendFlag():
 				print (Nume)
 				db=MySQLdb.connect(host="localhost",user="root",passwd="FlagFlag123.",db="platformgame" )
 				cursor = db.cursor()
-				sql = ("SELECT Puncte FROM challenges WHERE Nume = %s and Flag = %s")
+				sql = ("SELECT Puncte, Categorie FROM challenges WHERE Nume = %s and Flag = %s")
 				cursor.execute(sql, (Nume, Flag))
 				flag = list(cursor.fetchall())
 				if len(flag) > 0:
@@ -196,8 +196,8 @@ def sendFlag():
 
 					if len(solved) == 0:
 
-						sql = "INSERT INTO solves (ID_User,Challenge) VALUES (%s, %s)"
-						cursor.execute(sql, (session['IDUser'], Nume))
+						sql = "INSERT INTO solves (ID_User, Challenge, Category) VALUES (%s, %s, %s)"
+						cursor.execute(sql, (session['IDUser'], Nume, flag[0][1]))
 						db.commit()
 
 						sql = ("SELECT Points FROM users WHERE Username = %s ")
@@ -209,6 +209,7 @@ def sendFlag():
 						cursor.execute(sql, (str(totalPoints),session['Username']))
 						db.commit()
 						db.close()
+
 				return "DA"
 	return redirect("/")
 
@@ -225,8 +226,31 @@ def account():
 			sql = ("SELECT Points FROM users WHERE Username = %s ")
 			cursor.execute(sql, ([session['Username']]))
 			userPoints = list(cursor.fetchall())[0][0]
+
+
+			sql = ("SELECT Challenge, Category FROM solves WHERE ID_User = %s ")
+			cursor.execute(sql, ([session['IDUser']]))
+			userSolves = list(cursor.fetchall())
+
+			solves = []
+			for i in userSolves:
+				solves.append(i[0]+"|"+i[1])
+
+
+			sql = ("SELECT Challenge FROM solves WHERE ID_User = %s and Category = %s")
+			cursor.execute(sql, ([session['IDUser']], "Web"))
+			webSolves = list(cursor.fetchall())
+			webSolves = len(webSolves)
+
+			sql = ("SELECT Challenge FROM solves WHERE ID_User = %s and Category = %s")
+			cursor.execute(sql, ([session['IDUser']], "Networking"))
+			networkingSolves = list(cursor.fetchall())
+			networkingSolves = len(networkingSolves)
+
+
 			db.close()
-			return render_template('account.html',username=session['Username'],points=userPoints)
+			return render_template('account.html',username=session['Username'],points=userPoints, solves = solves, solves_len=len(solves), webSolves=webSolves, maxWeb = 14,
+				networkingSolves = networkingSolves, maxNetworking = 1)
 		else:
 			session['loggedin'] = False
 			session['Username'] = ""
